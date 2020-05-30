@@ -9,6 +9,9 @@ function makeUnConfiguredMapParsedDocument({ marked }) {
                 tokens.links = Object.create(null);
                 return marked.parser(tokens, conf.markedOptions);
             }
+            if (mdParsedDocument === undefined) {
+                return undefined;
+            }
             if (mdParsedDocument.documentPaths.basename === 'SUMMARY') {
                 return md_file_converter_1.TargetDocument.createTargetDocument({
                     documentPaths: mdParsedDocument.documentPaths,

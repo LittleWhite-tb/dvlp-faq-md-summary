@@ -14,6 +14,11 @@ export function makeUnConfiguredMapParsedDocument({ marked }: any): UnConfigured
                 return marked.parser(tokens, conf.markedOptions);
             }
 
+            // Special files does not return any document (as the section title file)
+            if (mdParsedDocument === undefined) {
+                return undefined;
+            }
+
             if (mdParsedDocument.documentPaths.basename === 'SUMMARY') {
                 return TargetDocument.createTargetDocument({
                     documentPaths: mdParsedDocument.documentPaths,

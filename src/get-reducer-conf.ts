@@ -5,10 +5,18 @@ import { ReducedTargetDocumentImpl } from './model-impl';
 
 export function getReducerConf(initialValues: { targetDocumentPaths: IDocumentPaths, targetDocumentList: ITargetDocument[] }): IReducerConf {
     const arr = initialValues.targetDocumentList.filter((targetDocument: TargetDocument) => {
+        if (targetDocument === undefined) {
+            return false;
+        }
+
         return targetDocument.documentPaths.basename !== 'SUMMARY';
     });
 
     const summaries = initialValues.targetDocumentList.filter((targetDocument: TargetDocument) => {
+        if (targetDocument === undefined) {
+            return false;
+        }
+
         return targetDocument.documentPaths.basename === 'SUMMARY';
     });
     if (summaries.length === 0) {

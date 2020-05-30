@@ -35,7 +35,7 @@ function initMdDocument(reducedTargetDocumentList, targetDocumentToReduceCurrent
             return qaMd + listItem;
         }, '');
         const level = sectionName.split('-').length - 2;
-        return md + `\n${'#'.repeat(level)}${sectionListObject[sectionName].sectionTitle}\n${links}`;
+        return md + `\n#${'#'.repeat(level)}${sectionListObject[sectionName].sectionTitle}\n${links}`;
     }, '');
     return reducedTargetDocumentList;
 }

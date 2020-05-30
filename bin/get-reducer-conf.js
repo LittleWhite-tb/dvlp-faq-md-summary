@@ -4,9 +4,15 @@ const md_file_converter_1 = require("md-file-converter");
 const model_impl_1 = require("./model-impl");
 function getReducerConf(initialValues) {
     const arr = initialValues.targetDocumentList.filter((targetDocument) => {
+        if (targetDocument === undefined) {
+            return false;
+        }
         return targetDocument.documentPaths.basename !== 'SUMMARY';
     });
     const summaries = initialValues.targetDocumentList.filter((targetDocument) => {
+        if (targetDocument === undefined) {
+            return false;
+        }
         return targetDocument.documentPaths.basename === 'SUMMARY';
     });
     if (summaries.length === 0) {
